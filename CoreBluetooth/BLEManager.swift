@@ -1,0 +1,32 @@
+import CoreBluetooth
+
+class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
+    private var centralManager: CBCentralManager!
+    private var connectedPeripheral: CBPeripheral?
+    
+    override init() {
+        super.init()
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+    }
+    
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        if central.state == .poweredOn {
+            // Start scanning for Pixel Watch
+            centralManager.scanForPeripherals(withServices: nil, options: nil)
+        }
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
+                        advertisementData: [String: Any], rssi RSSI: NSNumber) {
+        // Connect to Pixel Watch if detected
+        connectedPeripheral = peripheral
+        centralManager.stopScan()
+        centralManager.connect(peripheral, options: nil)
+        peripheral.delegate = self
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        // Discover services/characteristics here
+    }
+    // Add more BLE logic and protocol handling...
+}
