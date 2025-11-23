@@ -34,5 +34,26 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func sendEncryptedMessage(_ msg: Data) {
     // AES-GCM encryption, send via BLE
 }
+    import CoreBluetooth
+
+class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
+    // ... existing code ...
+
+    var pairingPIN: String?
+    var sessionKey: Data?
+
+    func showPairingPINDialog() {
+        // TODO: Present PIN entry UI to user, store in pairingPIN
+    }
+
+    func performKeyExchange() {
+        // TODO: Use ECDH to negotiate shared secret with Watch
+        // sessionKey = result of key exchange
+    }
+
+    func startEncryptedSession() {
+        // TODO: Secure BLE connection, use sessionKey to encrypt
+    }
+}
     // Add more BLE logic and protocol handling...
 }
