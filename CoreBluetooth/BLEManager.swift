@@ -31,5 +31,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func initiatePairing(pin: String) {
     // Exchange PIN, perform ECDH for shared secret, start encrypted session
 }
+    func sendEncryptedMessage(_ msg: Data) {
+    // AES-GCM encryption, send via BLE
+}
     // Add more BLE logic and protocol handling...
 }
