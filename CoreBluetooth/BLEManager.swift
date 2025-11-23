@@ -28,5 +28,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         // Discover services/characteristics here
     }
+    func initiatePairing(pin: String) {
+    // Exchange PIN, perform ECDH for shared secret, start encrypted session
+}
     // Add more BLE logic and protocol handling...
 }
