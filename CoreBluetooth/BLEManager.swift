@@ -34,13 +34,6 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func sendEncryptedMessage(_ msg: Data) {
     // AES-GCM encryption, send via BLE
 }
-    import CoreBluetooth
-
-class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
-    // ... existing code ...
-
-    var pairingPIN: String?
-    var sessionKey: Data?
 
     func showPairingPINDialog() {
         // TODO: Present PIN entry UI to user, store in pairingPIN
